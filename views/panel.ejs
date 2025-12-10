@@ -1,0 +1,22 @@
+<input type="file" id="uploadFile" />
+<button onclick="upload()">Upload</button>
+<button onclick="loadFiles()">Refresh</button>
+<div id="fileList"></div>
+
+<h3>Logs</h3>
+<select id="logFile">
+  <option value="syslog">syslog</option>
+  <option value="auth.log">auth.log</option>
+</select>
+<button onclick="loadLog()">View Log</button>
+<pre id="logOutput"></pre>
+<h3>Uploads Folder</h3>
+<select id="uploadFiles"></select>
+<button onclick="viewUploadFile()">View File</button>
+<pre id="uploadContent"></pre>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    loadUploads();
+  });
+</script>
+<script src="/client.js"></script>
