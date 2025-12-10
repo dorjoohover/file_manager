@@ -24,13 +24,13 @@ app.use("/login", rateLimit({ windowMs: 60000, max: 5 }));
 app.use((req, res, next) => {
   if (req.path === "/login" || req.path === "/login-submit") return next();
   const token = req.headers.authorization?.split(" ")[1] || req.cookies?.token;
-  if (!token) return res.redirect("/login");
+  if (!token) return res.redirect("http://localhost:5000/login");
 
   try {
     jwt.verify(token, "super-secret-key-123");
     next();
   } catch (err) {
-    return res.redirect("/login");
+    return res.redirect("http://localhost:5000/login");
   }
 });
 

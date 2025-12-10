@@ -48,7 +48,7 @@ export const upload = (req, res) => {
 
   file.mv(uploadPath, (err) => {
     if (err) return res.status(500).send(err.message);
-    res.redirect("/");
+    res.redirect("http://localhost:5000/");
   });
 };
 
@@ -61,7 +61,7 @@ export const deleteFile = (req, res) => {
   if (!fs.existsSync(filePath)) return res.status(404).send("File not found");
 
   fs.rmSync(filePath, { recursive: true, force: true });
-  res.redirect("/");
+  res.redirect("http://localhost:5000/");
 };
 
 // ----------------------------
@@ -75,7 +75,7 @@ export const rename = (req, res) => {
   if (!fs.existsSync(oldPath)) return res.status(404).send("File not found");
 
   fs.renameSync(oldPath, newPath);
-  res.redirect("/");
+  res.redirect("http://localhost:5000/");
 };
 
 // ----------------------------
