@@ -24,7 +24,7 @@ app.use("/login", rateLimit({ windowMs: 60000, max: 5 }));
 app.use((req, res, next) => {
   if (req.path === "/login" || req.path === "/login-submit") return next();
   const token = req.headers.authorization?.split(" ")[1] || req.cookies?.token;
-  if (!token) return res.redirect("http://localhost:5000/login");
+  if (!token) return res.redirect("/login");
 
   try {
     jwt.verify(token, "super-secret-key-123");
@@ -48,4 +48,6 @@ app.post("/delete", files.deleteFile);
 app.post("/rename", files.rename);
 app.get("/download", files.download);
 
-app.listen(5000, () => console.log("Server running on 5000"));
+app.listen(5000, "0.0.0.0", () => {
+  console.log("Server running on 0.0.0.0:5000");
+});
