@@ -4,9 +4,10 @@ export const config = {
   ADMIN_PASS: "$2b$10$QgcYxPfJ3Z4zqAWtWkLujeQQnes9o4jgv1qFnWDjk7oRJGVZjAjBa",
   // password = admin123 (hashed)
 
-  // BASE_PATH: "/var/www", // эндээс файлуудыг удирдана
-  BASE_PATH: "D:/projects/training/default/secure-file-manager/",
-  LOG_PATH: "D:/projects/training/default/secure-file-manager/logs",
+  BASE_PATH: "/var/backups/", // эндээс файлуудыг удирдана
+  // BASE_PATH: "D:/projects/training/default/secure-file-manager/",
+  LOG_PATH: "/root/file_manager/logs",
+  // LOG_PATH: "D:/projects/training/default/secure-file-manager/logs",
 };
 //  {
 //   JWT_SECRET: "super-secret-key-123", // сольж болно

@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { config } from "../config.js";
 const { BASE_PATH: PATH } = config;
-const BASE_PATH = PATH + "uploads";
+const BASE_PATH = PATH + "test";
 // ----------------------------
 // List files
 // ----------------------------
