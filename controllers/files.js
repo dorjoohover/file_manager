@@ -82,7 +82,7 @@ export const rename = (req, res) => {
 // Download
 // ----------------------------
 export const download = (req, res) => {
-  const { file } = req.query;
+  const { name: file } = req.query;
   const filePath = path.join(BASE_PATH, file);
 
   if (!fs.existsSync(filePath)) return res.status(404).send("File not found");
