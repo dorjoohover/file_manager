@@ -12,5 +12,5 @@ export const loginView = async (req, res) => {
 
   const token = jwt.sign({ user: "admin" }, JWT_SECRET, { expiresIn: "7d" });
   res.cookie("token", token, { httpOnly: true });
-  res.redirect("http://localhost:5000/");
+  res.redirect("/");
 };

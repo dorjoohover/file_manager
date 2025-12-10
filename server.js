@@ -30,7 +30,7 @@ app.use((req, res, next) => {
     jwt.verify(token, "super-secret-key-123");
     next();
   } catch (err) {
-    return res.redirect("http://localhost:5000/login");
+    return res.redirect("/login");
   }
 });
 
