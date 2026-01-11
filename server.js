@@ -11,7 +11,7 @@ const app = express();
 app.use("/", express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
-app.set('trust proxy', true);
+app.set("trust proxy", true);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
@@ -22,18 +22,25 @@ app.use("/login", rateLimit({ windowMs: 60000, max: 5 }));
 
 // JWT middleware
 app.use((req, res, next) => {
-  if (req.path === "/login" || req.path === "/login-submit") return next();
+  if (
+    req.path.startsWith("/uploads") ||
+    req.path === "/login" ||
+    req.path === "/login-submit"
+  ) {
+    return next();
+  }
+
   const token = req.headers.authorization?.split(" ")[1] || req.cookies?.token;
+
   if (!token) return res.redirect("/login");
 
   try {
     jwt.verify(token, "super-secret-key-123");
     next();
-  } catch (err) {
+  } catch {
     return res.redirect("/login");
   }
 });
-
 // Routes
 app.get("/login", (req, res) => res.render("login", { error: null }));
 app.post("/login-submit", auth.loginView);
