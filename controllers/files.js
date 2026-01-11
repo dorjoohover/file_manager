@@ -25,7 +25,9 @@ export const listUploads = (req, res) => {
   if (!fs.existsSync(BASE_PATH)) fs.mkdirSync(BASE_PATH, { recursive: true });
 
   const files = fs.readdirSync(BASE_PATH).map((f) => {
-    const stat = fs.statSync(path.join(BASE_PATH, f));
+    const dir = path.join(BASE_PATH, f)
+    console.log(dir)
+    const stat = fs.statSync(dir);
     return {
       name: f,
       isDir: stat.isDirectory(),
