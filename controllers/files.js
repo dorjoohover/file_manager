@@ -22,6 +22,7 @@ export const listView = (req, res) => {
 };
 export const listUploads = (req, res) => {
   // uploads folder байгаа эсэхийг шалгах
+  console.log('asdf')
   if (!fs.existsSync(BASE_PATH)) fs.mkdirSync(BASE_PATH, { recursive: true });
 
   const files = fs.readdirSync(BASE_PATH).map((f) => {
